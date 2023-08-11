@@ -1,5 +1,5 @@
 
-Please replace the placeholders with your actual credentials and values before executing the pipeline. The sensitive information has been replaced with placeholders (`**`) in this Markdown representation.
+Please replace the placeholders with your actual credentials and values before executing the pipeline.
 
 
 ```groovy
