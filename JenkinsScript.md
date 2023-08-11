@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/EmAdd9/Petclinic.git'
+                git branch: 'main', url: 'repository_url'
             }
         }
         stage('Mvn Compile') {
@@ -34,9 +34,9 @@ pipeline {
         stage("Sonarqube Analysis"){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=project_name \
                     -Dsonar.java.binaries=. \
-                    -Dsonar.projectKey=Petclinic '''
+                    -Dsonar.projectKey=project_name '''
     
                 }
             }
@@ -54,7 +54,7 @@ pipeline {
         }
         stage("Deploy to TomCat"){
             steps{
-                sh "sudo cp target/petclinic.war /opt/apache-tomcat-9.0.65/webapps/"
+                sh "sudo cp target/*.war /opt/apache-tomcat-9.0.65/webapps/"
             }
         }
 
